@@ -32,7 +32,7 @@ export default function AboutCarousel() {
     }, [])
 
     return (
-        <div className="relative w-full h-[420px] md:h-[500px] flex items-center justify-center overflow-visible">
+        <div className="relative w-full h-[280px] sm:h-[350px] md:h-[420px] lg:h-[500px] flex items-center justify-center overflow-visible">
 
         {images.map((img, i) => {
             const position = (i - index + images.length) % images.length
@@ -42,9 +42,9 @@ export default function AboutCarousel() {
             if (position === 0) {
             style = "translate-x-0 scale-100 z-30"
             } else if (position === 1) {
-            style = "translate-x-[70%] scale-85 z-20 opacity-70"
+            style = "translate-x-[50%] sm:translate-x-[60%] md:translate-x-[70%] scale-75 sm:scale-80 md:scale-85 z-20 opacity-70"
             } else if (position === images.length - 1) {
-            style = "-translate-x-[70%] scale-85 z-20 opacity-70"
+            style = "-translate-x-[50%] sm:-translate-x-[60%] md:-translate-x-[70%] scale-75 sm:scale-80 md:scale-85 z-20 opacity-70"
             } else {
             style = "scale-70 opacity-0"
             }
@@ -52,7 +52,7 @@ export default function AboutCarousel() {
             return (
             <motion.div
                 key={i}
-                className={`absolute w-[260px] md:w-[300px] h-[380px] md:h-[450px] rounded-3xl overflow-hidden shadow-2xl transition-all duration-500 ${style}`}
+                className={`absolute w-[180px] sm:w-[220px] md:w-[260px] lg:w-[300px] h-[260px] sm:h-[320px] md:h-[380px] lg:h-[450px] rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl sm:shadow-2xl transition-all duration-500 ${style}`}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
             >
@@ -66,10 +66,10 @@ export default function AboutCarousel() {
             onClick={prev}
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
-            className="absolute left-0 p-3 md:p-4 bg-bengal-600 text-white rounded-full shadow-lg hover:bg-bengal-700 transition z-50"
+            className="absolute left-1 sm:left-2 md:left-0 p-2 sm:p-3 md:p-4 bg-bengal-600 text-white rounded-full shadow-lg hover:bg-bengal-700 transition z-50"
             aria-label="Previous image"
         >
-            <ChevronLeft size={24} />
+            <ChevronLeft size={16} />
         </motion.button>
 
         {/* Right button */}
@@ -77,20 +77,20 @@ export default function AboutCarousel() {
             onClick={next}
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
-            className="absolute right-0 p-3 md:p-4 bg-bengal-600 text-white rounded-full shadow-lg hover:bg-bengal-700 transition z-50"
+            className="absolute right-1 sm:right-2 md:right-0 p-2 sm:p-3 md:p-4 bg-bengal-600 text-white rounded-full shadow-lg hover:bg-bengal-700 transition z-50"
             aria-label="Next image"
         >
-            <ChevronRight size={24} />
+            <ChevronRight size={16} />
         </motion.button>
 
         {/* Indicators */}
-        <div className="absolute -bottom-16 left-1/2 -translate-x-1/2 flex gap-2 z-10">
+        <div className="absolute -bottom-12 sm:-bottom-14 md:-bottom-16 left-1/2 -translate-x-1/2 flex gap-1 sm:gap-2 z-10">
             {images.map((_, i) => (
                 <motion.button
                     key={i}
                     onClick={() => setIndex(i)}
-                    className={`h-2 rounded-full transition-all ${
-                        i === index ? "bg-bengal-600 w-8" : "bg-gray-300 w-2 hover:bg-gray-400"
+                    className={`h-1.5 sm:h-2 rounded-full transition-all ${
+                        i === index ? "bg-bengal-600 w-6 sm:w-8" : "bg-gray-300 w-1.5 sm:w-2 hover:bg-gray-400"
                     }`}
                     aria-label={`Go to image ${i + 1}`}
                 />

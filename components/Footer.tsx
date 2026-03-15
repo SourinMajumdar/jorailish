@@ -1,91 +1,119 @@
 "use client"
 
+import { useEffect, useState } from "react"
 import { motion } from "framer-motion"
-import { MapPin, Phone, Clock, Mail, Facebook, Instagram, Twitter } from "lucide-react"
+import Image from "next/image"
+import { useRouter, usePathname } from "next/navigation"
+import { MapPin, Phone, Mail, Facebook, Instagram } from "lucide-react"
+import MainLogo from "@/public/jorailish2.png"
+import secondLogo from "@/public/jorailish.png"
 
 const footerLinks = {
   restaurant: [
     { label: "About Us", href: "#about" },
     { label: "Menu", href: "#menu" },
-    { label: "Reservations", href: "#booking" },
-    { label: "Events", href: "#events" },
-  ],
-  info: [
-    { label: "Contact", href: "#contact" },
-    { label: "Privacy Policy", href: "#privacy" },
-    { label: "Terms & Conditions", href: "#terms" },
-    { label: "Careers", href: "#careers" },
+    { label: "Booking", href: "#booking" },
+    { label: "Gallery", href: "#gallery" },
+    { label: "Reviews", href: "#testimonials" },
   ],
 }
 
 export default function Footer() {
+  const router = useRouter()
+  const pathname = usePathname()
+  const isHome = pathname === "/"
+
+  const handleLogoClick = () => {
+    if (isHome) {
+      window.scrollTo({ top: 0, behavior: "smooth" })
+    } else {
+      router.push("/")
+    }
+  }
+
   return (
-    <footer className="bg-gray-900 text-white pt-24 pb-12 px-6">
+    <footer className="bg-gray-900 text-white pt-16 md:pt-24 pb-8 md:pb-12 px-4 sm:px-6" id="footer">
       <div className="max-w-7xl mx-auto">
         {/* Main Footer Content */}
-        <div className="grid md:grid-cols-4 gap-12 mb-16">
-          {/* Brand Section */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12">
+          
+          {/* COLUMN 1: BIG LOGO (Clickable) */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
             viewport={{ once: true }}
+            className="flex justify-center sm:justify-start sm:col-span-2 lg:col-span-1"
           >
-            <h3 className="text-2xl font-heading text-bengal-600 mb-4">Jora Ilish</h3>
-            <p className="text-gray-400 mb-6">
-              Experience authentic Bengali cuisine in the heart of Guwahati, where tradition meets taste.
-            </p>
-            <div className="flex gap-4">
-              {[Facebook, Instagram, Twitter].map((Icon, index) => (
-                <motion.a
-                  key={index}
-                  href="#"
-                  whileHover={{ scale: 1.2 }}
-                  className="bg-bengal-600 p-2 rounded-full hover:bg-bengal-700 transition"
-                >
-                  <Icon size={20} />
-                </motion.a>
-              ))}
-            </div>
+            <button 
+              onClick={handleLogoClick}
+              className="bg-transparent border-0 p-0 cursor-pointer"
+            >
+              <Image 
+                src={MainLogo} 
+                alt="Jora Ilish" 
+                className="w-32 sm:w-40 h-auto object-contain hover:opacity-80 transition-opacity"
+                priority
+              />
+            </button>
           </motion.div>
 
-          {/* Quick Links */}
+          {/* COLUMN 2: BRAND & SOCIALS */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
             viewport={{ once: true }}
+            className="sm:col-span-2 lg:col-span-1"
           >
-            <h4 className="text-lg font-semibold mb-6">Restaurant</h4>
-            <ul className="space-y-3">
-              {footerLinks.restaurant.map((link) => (
-                <li key={link.href}>
-                  <a
-                    href={link.href}
-                    className="text-gray-400 hover:text-bengal-600 transition"
-                  >
-                    {link.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
+            {/* Small Logo (Clickable) */}
+            <button 
+              onClick={handleLogoClick}
+              className="bg-transparent border-0 p-0 cursor-pointer mb-3 sm:mb-4"
+            >
+              <Image 
+                src={secondLogo} 
+                alt="Jora Ilish Logo" 
+                className="h-8 sm:h-10 w-auto object-contain hover:opacity-80 transition-opacity"
+              />
+            </button>
+            <p className="text-gray-400 mb-4 sm:mb-6 max-w-sm text-xs sm:text-sm md:text-base">
+              Experience authentic Bengali cuisine in the heart of Guwahati, where tradition meets taste.
+            </p>
+            
+            <div className="flex gap-3 sm:gap-4">
+              <motion.a
+                href="https://www.facebook.com/joraillish" 
+                target="_blank"
+                whileHover={{ scale: 1.2 }}
+                className="bg-gray-800 p-2 rounded-full hover:bg-gray-700 transition"
+              >
+                <Facebook size={18} className="text-white" />
+              </motion.a>
+              <motion.a
+                href="https://www.instagram.com/jora.ilish" 
+                target="_blank"
+                whileHover={{ scale: 1.2 }}
+                className="bg-gray-800 p-2 rounded-full hover:bg-gray-700 transition"
+              >
+                <Instagram size={18} className="text-white" />
+              </motion.a>
+            </div>
           </motion.div>
 
-          {/* Info Links */}
+          {/* COLUMN 3: QUICK LINKS */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
             viewport={{ once: true }}
+            className="sm:col-span-2 lg:col-span-1 lg:pl-0"
           >
-            <h4 className="text-lg font-semibold mb-6">Information</h4>
-            <ul className="space-y-3">
-              {footerLinks.info.map((link) => (
+            <h4 className="text-base sm:text-lg font-semibold mb-4 sm:mb-6">Restaurant</h4>
+            <ul className="space-y-2 sm:space-y-3">
+              {footerLinks.restaurant.map((link) => (
                 <li key={link.href}>
-                  <a
-                    href={link.href}
-                    className="text-gray-400 hover:text-bengal-600 transition"
-                  >
+                  <a href={link.href} className="text-gray-400 hover:text-white transition text-xs sm:text-sm md:text-base">
                     {link.label}
                   </a>
                 </li>
@@ -93,64 +121,46 @@ export default function Footer() {
             </ul>
           </motion.div>
 
-          {/* Contact Info */}
+          {/* COLUMN 4: CONTACT INFO */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.3 }}
             viewport={{ once: true }}
+            className="sm:col-span-2 lg:col-span-1"
           >
-            <h4 className="text-lg font-semibold mb-6">Contact Us</h4>
-            <div className="space-y-4">
+            <h4 className="text-base sm:text-lg font-semibold mb-4 sm:mb-6">Contact Us</h4>
+            <div className="space-y-3 sm:space-y-4">
               <div className="flex items-start gap-3">
-                <MapPin size={20} className="text-bengal-600 mt-1 flex-shrink-0" />
-                <p className="text-gray-400">
-                  Pan Bazaar, Guwahati<br />
-                  Assam, India
+                <MapPin size={18} className="text-white mt-1 flex-shrink-0" />
+                <p className="text-gray-400 text-xs sm:text-sm md:text-base">
+                  Pandu port road, Adabari Tiniali,<br />
+                  Guwahati, Assam, India - 781012
                 </p>
               </div>
               <div className="flex items-center gap-3">
-                <Phone size={20} className="text-bengal-600 flex-shrink-0" />
-                <a
-                  href="tel:+919876543210"
-                  className="text-gray-400 hover:text-bengal-600 transition"
-                >
-                  +91 98765 43210
+                <Phone size={18} className="text-white flex-shrink-0" />
+                <a href="tel:+918876767574" className="text-gray-400 hover:text-white transition text-xs sm:text-sm md:text-base">
+                  +91 88767 67574
                 </a>
               </div>
               <div className="flex items-center gap-3">
-                <Mail size={20} className="text-bengal-600 flex-shrink-0" />
-                <a
-                  href="mailto:hello@jorailish.com"
-                  className="text-gray-400 hover:text-bengal-600 transition"
-                >
-                  hello@jorailish.com
+                <Mail size={18} className="text-white flex-shrink-0" />
+                <a href="mailto:jorailish@gmail.com" className="text-gray-400 hover:text-white transition text-xs sm:text-sm md:text-base">
+                  jorailish@gmail.com 
                 </a>
-              </div>
-              <div className="flex items-center gap-3">
-                <Clock size={20} className="text-bengal-600 flex-shrink-0" />
-                <p className="text-gray-400">
-                  12:00 PM - 11:00 PM<br />
-                  (Closed on Mondays)
-                </p>
               </div>
             </div>
           </motion.div>
         </div>
+      </div>
 
-        {/* Bottom Bar */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-          viewport={{ once: true }}
-          className="border-t border-gray-800 pt-8"
-        >
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-gray-400 text-sm">
-            <p>&copy; 2026 Jora Ilish. All rights reserved by Aami Bangali.</p>
-            <p>Crafted with ❤️ by Aami Bangali Group</p>
-          </div>
-        </motion.div>
+      {/* FOOTER BOTTOM */}
+      <div className="mt-10 md:mt-13 flex flex-col items-center gap-4 md:gap-6">
+        <div className="w-full h-px bg-gradient-to-r from-transparent via-gray-700 to-transparent max-w-4xl" />
+        <p className="text-gray-500 text-[9px] sm:text-[10px] md:text-xs tracking-widest uppercase text-center px-2">
+          &copy; 2026 Jora Ilish <span className="mx-2 md:mx-3 text-gray-700">|</span> All rights reserved by Aami Bangali.
+        </p>
       </div>
     </footer>
   )
