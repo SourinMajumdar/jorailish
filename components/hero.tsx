@@ -44,7 +44,10 @@ export default function Hero() {
     <section className="relative bg-white pt-20">
 
       {/* HERO IMAGE SLIDER */}
-      <div className="relative w-full h-[70vh] md:h-[65vh] overflow-hidden group">
+      {/* Mobile: aspect-[4/3] prevents the image from being too tall/cropped.
+          Desktop: md:h-[65vh] maintains the cinematic feel.
+      */}
+      <div className="relative w-full aspect-[4/3] md:aspect-auto md:h-[65vh] overflow-hidden group">
         {images.map((img, i) => (
           <Image
             key={i}
@@ -52,7 +55,7 @@ export default function Hero() {
             alt="Hero dish"
             fill
             priority={i === 0}
-            className={`object-cover transition-opacity duration-1000 ease-in-out ${
+            className={`object-cover object-center transition-opacity duration-1000 ease-in-out ${
               i === index ? "opacity-100" : "opacity-0"
             }`}
           />
@@ -60,51 +63,56 @@ export default function Hero() {
 
         <div className="absolute inset-0 bg-black/20 z-5"></div>
 
+        {/* Navigation Buttons - Scaled for Mobile/Desktop */}
         <motion.button
           onClick={prevSlide}
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.95 }}
-          className="absolute left-6 md:left-8 top-1/2 -translate-y-1/2 z-10 bg-white/80 backdrop-blur-md p-3 md:p-4 rounded-full shadow-lg hover:bg-white transition group-hover:opacity-100 opacity-60"
+          className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 z-10 bg-white/80 backdrop-blur-md p-2 md:p-4 rounded-full shadow-lg hover:bg-white transition group-hover:opacity-100 opacity-60"
         >
-          <ChevronLeft size={24} className="text-red-600" />
+          <ChevronLeft size={20} className="text-red-600 md:hidden" />
+          <ChevronLeft size={24} className="text-red-600 hidden md:block" />
         </motion.button>
 
         <motion.button
           onClick={nextSlide}
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.95 }}
-          className="absolute right-6 md:right-8 top-1/2 -translate-y-1/2 z-10 bg-white/80 backdrop-blur-md p-3 md:p-4 rounded-full shadow-lg hover:bg-white transition group-hover:opacity-100 opacity-60"
+          className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 z-10 bg-white/80 backdrop-blur-md p-2 md:p-4 rounded-full shadow-lg hover:bg-white transition group-hover:opacity-100 opacity-60"
         >
-          <ChevronRight size={24} className="text-red-600" />
+          <ChevronRight size={20} className="text-red-600 md:hidden" />
+          <ChevronRight size={24} className="text-red-600 hidden md:block" />
         </motion.button>
 
-        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 flex gap-2">
+        {/* Indicators/Dots */}
+        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-10 flex gap-1.5">
           {images.map((_, i) => (
             <motion.button
               key={i}
               onClick={() => setIndex(i)}
-              className={`h-2 rounded-full transition-all ${
-                i === index ? "bg-white w-8" : "bg-white/50 w-2 hover:bg-white/75"
+              className={`h-1.5 rounded-full transition-all ${
+                i === index ? "bg-white w-6" : "bg-white/50 w-1.5 hover:bg-white/75"
               }`}
             />
           ))}
         </div>
 
-        <div className="pointer-events-none absolute top-0 left-0 w-full h-24 bg-gradient-to-b from-white/95 via-white/30 to-transparent z-5"></div>
-        <div className="pointer-events-none absolute bottom-0 left-0 w-full h-20 bg-gradient-to-t from-white/90 via-white/20 to-transparent z-5"></div>
+        {/* Gradient Overlays */}
+        <div className="pointer-events-none absolute top-0 left-0 w-full h-16 md:h-24 bg-gradient-to-b from-white/95 via-white/30 to-transparent z-5"></div>
+        <div className="pointer-events-none absolute bottom-0 left-0 w-full h-12 md:h-20 bg-gradient-to-t from-white/90 via-white/20 to-transparent z-5"></div>
       </div>
 
       {/* TAGLINE SECTION */}
-      <div ref={ref} className="max-w-5xl mx-auto text-center mt-8 md:mt-10 px-6 pb-12"> 
+      <div ref={ref} className="max-w-5xl mx-auto text-center mt-8 md:mt-12 px-6 pb-12"> 
         <motion.h2 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="text-4xl md:text-5xl lg:text-6xl font-heading tracking-wide leading-tight text-slate-900"
+          className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-heading tracking-wide leading-tight text-slate-900"
         >
           Taste of <span className="font-bold" style={{ color: '#c41e3a' }}>Bengal</span> 
-          <br /> 
+          <br className="md:block" /> 
           in the Heart of <span className="font-bold" style={{ color: '#c41e3a' }}>Guwahati</span> 
         </motion.h2>
 
@@ -113,7 +121,7 @@ export default function Hero() {
             scaleX, 
             opacity: underlineOpacity 
           }} 
-          className="h-[3px] bg-gradient-to-r from-transparent via-red-600 to-transparent mt-8 mx-auto origin-center w-full" 
+          className="h-[3px] bg-gradient-to-r from-transparent via-red-600 to-transparent mt-6 md:mt-8 mx-auto origin-center w-full" 
         /> 
       </div>
     </section>
