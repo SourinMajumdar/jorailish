@@ -7,7 +7,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import Navbar from "@/components/navbar";
 import { menu } from "@/data/menu";
 import ScrollToTop from "@/components/ScrollToTop";
-import { ChevronLeft, Search, X } from "lucide-react"; // Added X icon
+import { ChevronLeft, Search, X } from "lucide-react";
 
 export default function MenuPage() {
   const [searchQuery, setSearchQuery] = useState("");
@@ -71,44 +71,45 @@ export default function MenuPage() {
           
           {/* Header Section */}
           <motion.div
-            className="flex flex-col md:flex-row items-center justify-between gap-6 mb-10 md:mb-16"
+            className="relative flex flex-col md:flex-row items-center justify-center mb-10 md:mb-16"
             initial={{ opacity: 0, y: -16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4, ease: "easeOut" }}
           >
-            <div className="flex items-center justify-between w-full md:w-auto md:flex-1">
-              <div className="md:w-[120px] lg:w-[180px] flex justify-start">
-                <Link href="/#menu">
-                  <button className="flex items-center justify-center w-10 h-10 rounded-full border border-gray-400 text-gray-700 hover:border-red-500 hover:text-red-600 transition-colors bg-white">
-                    <ChevronLeft size={20} />
-                  </button>
-                </Link>
-              </div>
-
-              <h1 className="text-3xl sm:text-4xl md:text-5xl font-heading text-center flex-1">
+            {/* Back Button & Mobile Title Row */}
+            <div className="flex items-center justify-between w-full md:w-auto md:absolute md:left-0 mb-6 md:mb-0">
+              <Link href="/#menu">
+                <button className="flex items-center justify-center w-10 h-10 rounded-full border border-gray-400 text-gray-700 hover:border-red-500 hover:text-red-600 transition-colors bg-white">
+                  <ChevronLeft size={20} />
+                </button>
+              </Link>
+              
+              {/* Mobile-only Heading (Inline with back button) */}
+              <h1 className="text-3xl font-heading md:hidden flex-1 text-center">
                 Our <span className="text-red-700">Menu</span>
               </h1>
-
-              <div className="w-10 md:hidden" />
+              
+              <div className="w-10 md:hidden" /> {/* Spacer for symmetry */}
             </div>
 
-            {/* FIXED SEARCH BAR */}
-            <div className="relative w-full md:w-[240px] lg:w-[300px]">
-              {/* Magnifying Glass Icon */}
+            {/* Desktop-only Heading (True center) */}
+            <h1 className="hidden md:block text-4xl md:text-5xl font-heading text-center">
+              Our <span className="text-red-700">Menu</span>
+            </h1>
+
+            {/* Search Bar Container */}
+            <div className="relative w-full mt-2 md:mt-0 md:absolute md:right-0 md:w-[220px] lg:w-[260px]">
               <Search
                 size={18}
                 className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500 z-20 pointer-events-none"
               />
-              
               <input
                 type="text"
-                placeholder="Search for a dish..."
+                placeholder="Search..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-11 pr-10 py-3 md:py-2.5 rounded-full border border-gray-300 text-base md:text-sm focus:outline-none focus:border-red-500 focus:ring-2 focus:ring-red-100 transition-all bg-white z-10 relative"
+                className="w-full pl-11 pr-10 py-3 md:py-2 rounded-full border border-gray-300 text-base md:text-sm focus:outline-none focus:border-red-500 focus:ring-2 focus:ring-red-100 transition-all bg-white z-10 relative"
               />
-
-              {/* Clear Icon (Cross) */}
               <AnimatePresence>
                 {searchQuery && (
                   <motion.button
@@ -125,7 +126,7 @@ export default function MenuPage() {
             </div>
           </motion.div>
 
-          {/* Categories */}
+          {/* Categories - Hidden during search */}
           {!searchQuery && (
             <div className="flex flex-wrap justify-center gap-3 md:gap-4 mb-12 md:mb-16">
               {menu.map((section) => (
@@ -148,14 +149,7 @@ export default function MenuPage() {
           <div className="max-w-4xl mx-auto">
             <AnimatePresence mode="wait">
               {loading ? (
-                <motion.div
-                  key="skeleton"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.2 }}
-                  className="space-y-8"
-                >
+                <motion.div key="skeleton" className="space-y-8">
                   {Array.from({ length: 6 }).map((_, i) => (
                     <div key={i} className="flex justify-between items-start border-b border-gray-100 pb-4 animate-pulse">
                       <div className="space-y-3">
@@ -167,13 +161,7 @@ export default function MenuPage() {
                   ))}
                 </motion.div>
               ) : (
-                <motion.div
-                  key="list"
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -10 }}
-                  className="space-y-6"
-                >
+                <motion.div key="list" className="space-y-6">
                   {(searchQuery ? filteredItems : activeMenu?.items)?.map((item, i) => (
                     <motion.div
                       key={`${item.name}-${i}`}
@@ -199,11 +187,6 @@ export default function MenuPage() {
                       </div>
 
                       <div className="text-right shrink-0">
-                        {item.unit === "Full / Half" && (
-                          <p className="text-[10px] md:text-xs text-gray-400 uppercase tracking-tighter mb-1">
-                            {item.unit}
-                          </p>
-                        )}
                         <div className="text-lg md:text-xl font-bold text-red-600">
                           {item.price}
                           {item.altPrice && (
