@@ -193,7 +193,7 @@ export default function MenuPage() {
                         </h3>
                         {searchQuery && (
                           <p className="text-xs text-red-500 mt-1 uppercase tracking-wider font-semibold">
-                            {item.category}
+                            {(item as any).category}
                           </p>
                         )}
                       </div>
