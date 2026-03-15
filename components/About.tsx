@@ -151,7 +151,7 @@ export default function About() {
               {/* Maps Button */}
               <div className="flex items-start">
                 <a
-                  href="#"
+                  href="https://maps.app.goo.gl/WjXJuuTz6hExMfov6"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="relative overflow-hidden px-6 py-2 border-2 border-red-600 text-red-600 font-semibold rounded-full group inline-block"
