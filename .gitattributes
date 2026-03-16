@@ -1,0 +1,14 @@
+# Enforce consistent line endings across platforms
+# This prevents Git from auto-converting LF/CRLF when checking out/committing.
+* text=auto eol=lf
+
+# Override for known binary file types
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.svg binary
+*.ico binary
+*.pdf binary
+*.mp4 binary
+*.webp binary

@@ -1,36 +1,80 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Jorailish
 
-## Getting Started
+A modern, responsive restaurant landing page built with **Next.js 16**, **Tailwind CSS**, and **Framer Motion**.
 
-First, run the development server:
+## ⭐ Key features
+
+- Responsive **Hero slider** with auto-advance + manual controls
+- Responsive **navigation bar** with mobile menu
+- **Menu section** showcasing featured items
+- **Booking UI** section (visual layout only)
+- **Gallery** preview and **testimonials** section
+- Scroll-to-top button and smooth scrolling
+
+## 🧰 Tech stack
+
+- Next.js 16 (App Router)
+- React 19
+- Tailwind CSS 4
+- Framer Motion
+- Lucide Icons
+
+## 🚀 Getting started
+
+### Requirements
+
+- Node.js 18+ (recommended)
+- npm (bundled with Node)
+
+### Run locally
 
 ```bash
+cd e:\Projects\jorailish
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open http://localhost:3000 in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Build & run production
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build
+npm run start
+```
 
-## Learn More
+## 📁 Project structure
 
-To learn more about Next.js, take a look at the following resources:
+- `app/` – Next.js pages + layouts
+- `components/` – UI components (Navbar, Hero, Menu, Gallery, etc.)
+- `public/` – static assets (images, icons)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## ✅ Formatting & linting
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Repo includes formatting + lint configs:
 
-## Deploy on Vercel
+- `.editorconfig` (consistency across editors)
+- `.gitattributes` (enforce LF line endings)
+- `eslint.config.mjs` (Next.js + TypeScript rules)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Run lint:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+npm run lint
+```
+
+## 🚀 Deployment
+
+This repo is ready to deploy to Vercel:
+
+1. Connect the repository to Vercel
+2. Select the `jorailish` project
+3. Vercel will build and deploy automatically
+
+## 🧩 Notes
+
+If VS Code auto-modifies files on open, the repo includes workspace settings (`.vscode/settings.json`) to minimize auto-format / auto-save behavior.
+
+---
+
+If you want me to add a “Contributing” section or document the component library, just say so!

@@ -1,0 +1,13 @@
+{
+  // Keep line endings consistent regardless of OS
+  "files.eol": "\n",
+
+  // Prevent VS Code from auto-saving or auto-formatting on open/save
+  "files.autoSave": "off",
+  "editor.formatOnSave": false,
+  "editor.formatOnPaste": false,
+  "editor.formatOnType": false,
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": false
+  }
+}
