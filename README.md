@@ -1,80 +1,86 @@
 # Jorailish
 
-A modern, responsive restaurant landing page built with **Next.js 16**, **Tailwind CSS**, and **Framer Motion**.
+A modern, responsive restaurant landing page built with **Next.js 16**, **React 19**, **TypeScript**, **Tailwind CSS**, and **Framer Motion**.
 
-## ⭐ Key features
+Live: [https://jorailish.vercel.app](https://jorailish.vercel.app)
 
-- Responsive **Hero slider** with auto-advance + manual controls
+## ⭐ Key Features
+
+- Responsive **Hero slider** with auto-advance and manual controls
 - Responsive **navigation bar** with mobile menu
-- **Menu section** showcasing featured items
-- **Booking UI** section (visual layout only)
-- **Gallery** preview and **testimonials** section
-- Scroll-to-top button and smooth scrolling
+- **Featured menu section** showcasing signature dishes
+- **Booking UI section** (visual layout for future integration)
+- **Gallery preview** and **testimonials carousel**
+- Smooth scrolling and **scroll-to-top button**
+- Mobile-friendly responsive layout
 
-## 🧰 Tech stack
+## 🧰 Tech Stack
 
-- Next.js 16 (App Router)
-- React 19
-- Tailwind CSS 4
-- Framer Motion
-- Lucide Icons
+- **Next.js 16** (App Router)
+- **React 19**
+- **TypeScript**
+- **Tailwind CSS 4**
+- **Framer Motion** (animations)
+- **Lucide Icons** (icon library)
 
-## 🚀 Getting started
+## 🚀 Getting Started
 
 ### Requirements
 
-- Node.js 18+ (recommended)
+- Node.js **18+**
 - npm (bundled with Node)
 
 ### Run locally
 
+Clone the repository and install dependencies:
+
 ```bash
-cd e:\Projects\jorailish
+git clone https://github.com/<your-username>/jorailish.git
+cd jorailish
 npm install
 npm run dev
 ```
+Open: ```http://localhost:3000```
 
-Open http://localhost:3000 in your browser.
-
-### Build & run production
-
-```bash
+Build & Run Production
+```
 npm run build
 npm run start
 ```
 
-## 📁 Project structure
-
-- `app/` – Next.js pages + layouts
-- `components/` – UI components (Navbar, Hero, Menu, Gallery, etc.)
-- `public/` – static assets (images, icons)
-
-## ✅ Formatting & linting
-
-Repo includes formatting + lint configs:
-
-- `.editorconfig` (consistency across editors)
-- `.gitattributes` (enforce LF line endings)
-- `eslint.config.mjs` (Next.js + TypeScript rules)
-
-Run lint:
-
-```bash
-npm run lint
+## 📁 Project Structure
 ```
+app/          → Next.js pages and layouts
+components/   → Reusable UI components
+data/         → Menu and review data
+public/       → Static assets (images, icons)
+```
+
+## ✅ Formatting & Linting
+
+The repository includes formatting and lint configurations:
+```
+.editorconfig – Consistent editor behavior
+
+.gitattributes – Enforces LF line endings
+
+eslint.config.mjs – Next.js + TypeScript lint rules
+```
+Run lint: ```npm run lint```
+
 
 ## 🚀 Deployment
 
-This repo is ready to deploy to Vercel:
+This project is ready for deployment on Vercel.
 
-1. Connect the repository to Vercel
-2. Select the `jorailish` project
-3. Vercel will build and deploy automatically
+Steps:
+- Connect the repository to Vercel
+- Import the project
+- Vercel will automatically detect Next.js and deploy
 
 ## 🧩 Notes
 
-If VS Code auto-modifies files on open, the repo includes workspace settings (`.vscode/settings.json`) to minimize auto-format / auto-save behavior.
+The repository includes ```.vscode/settings.json``` to reduce automatic formatting or file modifications when opening the project in VS Code.
 
----
+Built as a restaurant website concept for Jora Ilish, Guwahati.
 
-If you want me to add a “Contributing” section or document the component library, just say so!
