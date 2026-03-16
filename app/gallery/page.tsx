@@ -9,7 +9,7 @@ import ScrollToTop from "@/components/ScrollToTop";
 import Navbar from "@/components/navbar";
 
 const images = Array.from(
-  { length: 24 },
+  { length: 25 },
   (_, i) => `/gallery/${i + 1}.jpg`
 );
 
