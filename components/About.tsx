@@ -94,7 +94,7 @@ export default function About() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
               viewport={{ once: true }}
-              className="text-sm sm:text-base md:text-lg text-gray-900 leading-relaxed font-light text-justify"
+              className="text-[18px] md:text-[20px] text-gray-900 leading-relaxed font-light text-justify"
             >
               Jora Ilish celebrates the rich culinary heritage of Bengal.
               Inspired by traditional kitchens and timeless recipes,
@@ -106,7 +106,7 @@ export default function About() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
               viewport={{ once: true }}
-              className="text-sm sm:text-base md:text-lg text-gray-900 leading-relaxed font-light text-justify"
+              className="text-[18px] md:text-[20px] text-gray-900 leading-relaxed font-light text-justify"
             >
               From Shorshe Ilish to Kosha Mangsho and Chingri Malai Curry,
               every dish reflects the warmth of Bengali hospitality
@@ -118,7 +118,7 @@ export default function About() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.35 }}
               viewport={{ once: true }}
-              className="text-sm sm:text-base md:text-lg text-gray-900 leading-relaxed font-light text-justify"
+              className="text-[18px] md:text-[20px] text-gray-900 leading-relaxed font-light text-justify"
             >
               Our space is perfect for family gatherings, celebrations,
               and small parties. Guests can enjoy a comfortable,
@@ -134,38 +134,13 @@ export default function About() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5 }}
               viewport={{ once: true }}
-              className="mt-10 grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-x-8 pt-4"
+              className="mt-10 grid grid-cols-1 sm:grid-cols-2 gap-8 sm:gap-x-8 pt-4 text-center sm:text-left"
             >
-              {/* Location */}
-              <div className="flex items-start gap-3">
-                <MapPin className="text-red-600 mt-1" size={20} />
-                <div>
-                  <p className="font-semibold text-gray-800">Location</p>
-                  <p className="text-gray-600 text-sm">
-                    Pandu Port Rd, Adabari Tiniali <br />
-                    Pandu, Guwahati, Assam 781012
-                  </p>
-                </div>
-              </div>
-
-              {/* Maps Button */}
-              <div className="flex items-start">
-                <a
-                  href="https://maps.app.goo.gl/WjXJuuTz6hExMfov6"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="relative overflow-hidden px-6 py-2 border-2 border-red-600 text-red-600 font-semibold rounded-full group inline-block"
-                >
-                  <span className="relative z-10 transition-colors duration-300 group-hover:text-white">
-                    Open in Google Maps
-                  </span>
-                  <span className="absolute inset-0 bg-red-600 scale-x-0 origin-center transition-transform duration-500 ease-out group-hover:scale-x-100"></span>
-                </a>
-              </div>
+              
 
               {/* Opening Hours */}
-              <div className="flex items-start gap-3">
-                <Clock className="text-red-600 mt-1" size={20} />
+              <div className="flex flex-col sm:flex-row items-center sm:items-start gap-3">
+                <Clock className="text-red-600 sm:mt-1" size={20} />
                 <div>
                   <p className="font-semibold text-gray-800">Opening Hours</p>
                   <p className="text-gray-600 text-sm">
@@ -176,8 +151,8 @@ export default function About() {
               </div>
 
               {/* Services */}
-              <div className="flex items-start gap-3">
-                <Utensils className="text-red-600 mt-1" size={20} />
+              <div className="flex flex-col sm:flex-row items-center sm:items-start gap-3">
+                <Utensils className="text-red-600 sm:mt-1" size={20} />
                 <div>
                   <p className="font-semibold text-gray-800">Services</p>
                   <p className="text-gray-600 text-sm">
@@ -186,22 +161,48 @@ export default function About() {
                   </p>
                 </div>
               </div>
+
+              {/* Location */}
+              <div className="flex flex-col sm:flex-row items-center sm:items-start gap-3">
+                <MapPin className="text-red-600 sm:mt-1" size={20} />
+                <div>
+                  <p className="font-semibold text-gray-800">Location</p>
+                  <p className="text-gray-600 text-sm">
+                    Pandu Port Rd, Adabari Tiniali <br />
+                    Pandu, Guwahati, Assam 781012
+                  </p>
+                </div>
+              </div>
+
+              {/* Maps Button */}
+              <div className="flex items-center justify-center sm:justify-start">
+                <a
+                  href="https://maps.google.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="relative overflow-hidden px-4 py-1.5 sm:px-5 sm:py-1.5 border-2 border-red-600 text-red-600 text-sm sm:text-sm font-semibold rounded-full group inline-block"
+                >
+                  <span className="relative z-10 transition-colors duration-300 group-hover:text-white">
+                    Open in Google Maps
+                  </span>
+                  <span className="absolute inset-0 bg-red-600 scale-x-0 origin-center transition-transform duration-500 ease-out group-hover:scale-x-100"></span>
+                </a>
+              </div>
             </motion.div>
           </div>
-          {/* Delivery Platforms */}
         </div>
-          <div className="flex flex-col sm:flex-row items-center justify-center mt-12 gap-4 sm:gap-6 -mb-8 md:-mb-10">
-            <p className="text-gray-900 text-lg sm:text-2xl md:text-3xl whitespace-nowrap">
-              We are also available on
-            </p>
-              <div className="flex items-center gap-3 sm:gap-4 mt-0">
-                <SiZomato size={60} className="text-red-600 hover:scale-110 transition-transform" />
-              
-                <p className="text-gray-900 text-sm sm:text-xl md:text-2xl">and</p>
-            
-                <SiSwiggy size={50} className="text-orange-500 hover:scale-110 transition-transform" />
-            </div>
+
+        {/* Delivery Platforms */}
+        <div className="flex flex-col sm:flex-row items-center justify-center mt-12 gap-4 sm:gap-6 -mb-8 md:-mb-10">
+          <p className="text-gray-900 text-lg sm:text-2xl md:text-3xl whitespace-nowrap">
+            We are also available on
+          </p>
+          <div className="flex items-center gap-3 sm:gap-4 mt-0">
+            <SiZomato size={60} className="text-red-600 hover:scale-110 transition-transform" />
+            <p className="text-gray-900 text-sm sm:text-xl md:text-2xl">and</p>
+            <SiSwiggy size={50} className="text-orange-500 hover:scale-110 transition-transform" />
           </div>
+        </div>
       </div>
     </motion.section>
   )
